@@ -93,7 +93,7 @@ function getPropByPath(obj: Props, path: string, strict: boolean) {
 
 function useForm(
   modelRef: Props | Ref<Props>,
-  rulesRef?: Props | Ref<Props>,
+  rulesRef: Props | Ref<Props>,
   options?: {
     immediate?: boolean;
     deep?: boolean;
@@ -122,7 +122,7 @@ function useForm(
   const validateInfos = reactive<validateInfos>({});
 
   const rulesKeys = computed(() => {
-    return Object.keys(unref(rulesRef));
+    return rulesRef ? Object.keys(unref(rulesRef)) : [];
   });
 
   watch(
